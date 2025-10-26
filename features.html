@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Aura AI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A1A;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #8c52ff, #9333ea);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 10px 15px -3px rgba(140, 82, 255, 0.2);
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .nav-links a.active {
+            color: white;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .btn-ghost {
+            background: transparent;
+            color: #d1d5db;
+        }
+        
+        .btn-primary {
+            background: #8c52ff;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(140, 82, 255, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: #9333ea;
+        }
+        
+        .hero-features {
+            padding: 80px 24px 64px;
+            text-align: center;
+        }
+        
+        .hero-features h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #8c52ff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-features p {
+            font-size: 20px;
+            color: #9ca3af;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .feature-section {
+            padding: 80px 24px;
+            border-top: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .feature-image {
+            position: relative;
+        }
+        
+        .feature-image::before {
+            content: '';
+            position: absolute;
+            inset: -16px;
+            background: linear-gradient(135deg, rgba(140, 82, 255, 0.2), rgba(147, 51, 234, 0.2));
+            border-radius: 24px;
+            filter: blur(40px);
+            z-index: -1;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .feature-content {
+            padding: 0 24px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(140, 82, 255, 0.1);
+            border: 1px solid rgba(140, 82, 255, 0.2);
+            border-radius: 20px;
+            color: #8c52ff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .feature-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .feature-content p {
+            font-size: 18px;
+            color: #9ca3af;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #d1d5db;
+        }
+        
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: #8c52ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .cta-section {
+            padding: 128px 24px;
+        }
+        
+        .cta-box {
+            max-width: 896px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(109, 40, 217, 0.1));
+            border: 1px solid rgba(140, 82, 255, 0.2);
+            border-radius: 24px;
+            padding: 64px;
+            box-shadow: 0 25px 50px -12px rgba(140, 82, 255, 0.1);
+        }
+        
+        .cta-box h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        .cta-box p {
+            font-size: 18px;
+            color: #9ca3af;
+            margin-bottom: 40px;
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+        
+        .cta-box small {
+            display: block;
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 24px;
+        }
+        
+        footer {
+            border-top: 1px solid rgba(75, 85, 99, 0.3);
+            padding: 48px 24px;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-features h1 { font-size: 36px; }
+            .feature-row { grid-template-columns: 1fr; gap: 40px; }
+            .feature-content h2 { font-size: 28px; }
+            .cta-box { padding: 40px 24px; }
+            .cta-box h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Aura AI</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-ghost">Login</button>
+                <button class="btn btn-primary">Start Free Trial →</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-features">
+        <div class="container">
+            <h1>Explore the Power of <span class="gradient-text">Aura AI</span></h1>
+            <p>Discover how our intelligent CRM platform revolutionizes the way you manage customer relationships, automate workflows, and drive growth.</p>
+        </div>
+    </section>
+
+    <!-- Feature 1 -->
+    <section class="feature-section">
+        <div class="feature-row">
+            <div class="feature-image">
+                <img src="https://placehold.co/600x400/1a1a2e/8c52ff?text=AI+Assistant+Interface" alt="AI Assistant">
+            </div>
+            <div class="feature-content">
+                <span class="badge">Conversational AI</span>
+                <h2>Chat with Your CRM Like a Colleague</h2>
+                <p>No more navigating complex menus or running manual reports. Simply ask Aura AI what you need in plain English. Get instant answers, retrieve customer data, schedule follow-ups, and generate reports—all through natural conversation.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Natural language queries with instant responses</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Contextual understanding of your business data</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Take action without leaving the conversation</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 2 -->
+    <section class="feature-section">
+        <div class="feature-row">
+            <div class="feature-content">
+                <span class="badge">Intelligent Automation</span>
+                <h2>Automation That Actually Works</h2>
+                <p>Forget rigid, brittle automation rules. Aura AI learns from your workflows and intelligently automates repetitive tasks while adapting to exceptions. Focus on strategic relationships while AI handles the busywork.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Auto-prioritize leads based on behavior and engagement</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Smart follow-up reminders that adapt to context</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Automated data enrichment and deduplication</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <img src="https://placehold.co/600x400/1a1a2e/8c52ff?text=Smart+Automation" alt="Automation">
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 3 -->
+    <section class="feature-section">
+        <div class="feature-row">
+            <div class="feature-image">
+                <img src="https://placehold.co/600x400/1a1a2e/8c52ff?text=Unified+Dashboard" alt="Dashboard">
+            </div>
+            <div class="feature-content">
+                <span class="badge">Complete Visibility</span>
+                <h2>Everything in One Place</h2>
+                <p>Stop juggling multiple tools and browser tabs. Aura AI brings together customer profiles, communication history, deal pipelines, and analytics into one seamless, beautifully designed interface.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>360° customer view with all touchpoints</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Real-time collaboration with team members</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Customizable views for your workflow</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4 -->
+    <section class="feature-section">
+        <div class="feature-row">
+            <div class="feature-content">
+                <span class="badge">Predictive Intelligence</span>
+                <h2>Insights That Drive Decisions</h2>
+                <p>Move beyond historical reports. Aura AI analyzes patterns across your entire customer base to predict outcomes, identify opportunities, and surface the insights that matter most to your business goals.</p>
+                <ul class="feature-list">
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Predictive lead scoring and churn detection</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Revenue forecasting with AI-powered accuracy</span>
+                    </li>
+                    <li>
+                        <div class="checkmark">
+                            <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <span>Actionable recommendations, not just data</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <img src="https://placehold.co/600x400/1a1a2e/8c52ff?text=Predictive+Analytics" alt="Analytics">
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Experience the Future of CRM</h2>
+                <p>See how Aura AI can transform your sales process with intelligent automation and actionable insights.</p>
+                <button class="btn btn-primary btn-large">Start Free Trial →</button>
+                <small>No credit card required • 14-day free trial</small>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Aura AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
